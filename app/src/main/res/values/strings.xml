@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sign-In interface</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="button1">Sign in</string>
+    <string name="checking">...</string>
+</resources>
