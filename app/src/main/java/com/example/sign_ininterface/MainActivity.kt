@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,20 +29,32 @@ class MainActivity : AppCompatActivity() {
         var btn1 = findViewById<Button>(R.id.sign_in)
         var check = findViewById<TextView>(R.id.checking)
 
+        var text = ""
+        var duration = Toast.LENGTH_LONG
+        var toast : Toast
+
         btn1.setOnClickListener() {
-            if( findUser(username.text.toString(), password.text.toString(), users) ) {
+            if( checkAuthentication(username.text.toString(), password.text.toString(), users) ) {
                 check.text = "Hello, " + username.text.toString()
+
+                text = "SUCCESSFULLY"
+                toast = Toast.makeText(this, text, duration )
+                toast.show()
             }
             else {
                 check.text = "Username or password isn't correct!"
                 check.setTextColor(Color.RED)
+
+                text = "UNSUCCESSFULLY!!!"
+                toast = Toast.makeText(this, text, duration )
+                toast.show()
             }
         }
 
 
 
     }
-    fun findUser(username: String, password: String, users: List<Map<String, Any>>): Boolean {
+    fun checkAuthentication(username: String, password: String, users: List<Map<String, Any>>): Boolean {
         for (user in users) {
             if (username == user["username"] && password == user["password"])
                 return true
