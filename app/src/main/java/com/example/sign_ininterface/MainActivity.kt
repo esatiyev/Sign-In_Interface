@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         btn1.setOnClickListener() {
             if( checkAuthentication(username.text.toString(), password.text.toString(), users) ) {
+                check.setTextColor(Color.GREEN)
                 check.text = "Hello, " + username.text.toString()
 
                 text = "SUCCESSFULLY"
